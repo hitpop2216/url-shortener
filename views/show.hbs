@@ -1,5 +1,18 @@
-<form class="d-flex flex-column align-items-center justify-content-center" action="">
-  <h4>Success!Please use this link:</h3>
-  <a href="{{urlOriginal}}">{{urlShorten}}</a>
-  <button class="btn btn-primary" type="submit">Copy!</button>
-</form>
+<div class="d-flex flex-column align-items-center justify-content-center">
+  <h4>Success!Please use this link:</h4>
+  <a id="generatedURL" href="{{urlOriginal}}">{{urlShorten}}</a>
+  <button class="btn btn-primary mt-2" id="btn" type="button" onclick="copyToClipBoard()">Copy</button>
+</div>
+<script>
+  function copyToClipBoard() {
+    const btn = document.getElementById('btn')
+    let url = document.getElementById('generatedURL').innerHTML
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        console.log("Text copied to clipboard...")
+      })
+      .catch(err => console.log(err))
+    btn.classList.add('btn-secondary')
+    btn.innerText = 'Copied!'
+  }
+</script>

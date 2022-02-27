@@ -1,8 +1,12 @@
-const mongoose = require(mongoose)
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const urlSchema = new Schema({
-  url: {
-    type: URL,
+  urlOriginal: {
+    type: String,
+    required: true
+  },
+  urlShorten: {
+    type: String,
     required: true
   }
 })

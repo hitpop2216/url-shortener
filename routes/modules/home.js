@@ -1,5 +1,5 @@
 const express = require('express')
-const generateURL = require('../../config/generateURL')
+const generateURL = require('../../utils/generateURL')
 const URL = require('../../models/urlshortener')
 const router = express.Router()
 

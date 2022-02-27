@@ -1,5 +1,22 @@
-<form class="d-flex flex-column align-items-center justify-content-center" action="/" method="POST">
-  <!-- 當輸入空網址，彈出提示視窗 --> 
-  <input class="alert alert-secondary" type="url" placeholder="Input URL here" name="url" required style="width: 600px; height: 45px;">
-  <button class="btn btn-outline-primary w-50" type="submit">Shorten</button>
+<form novalidate id="form" class="d-flex flex-column align-items-center justify-content-center" action="/" method="POST">
+  <div class="mb-3">
+    <input class="form-control" type="URL" placeholder="http://" name="url" required
+      style="width: 600px; height: 45px;">
+    <div class="valid-feedback"></div>
+    <div class="invalid-feedback" id="invalid">
+      This field is URL required!
+    </div>
+  </div>
+  <button class="btn btn-outline-primary w-50" id="submit" type="submit">Shorten</button>
 </form>
+<script>
+  const form = document.getElementById("form")
+  const submit = document.getElementById("submit")
+  submit.addEventListener('click', () => {
+    if (!form.checkValidity()) {
+      event.stopPropagation()
+      event.preventDefault()
+    }
+    form.classList.add('was-validated')
+  })
+</script>

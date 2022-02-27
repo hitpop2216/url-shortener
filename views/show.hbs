@@ -9,7 +9,7 @@
     let url = document.getElementById('generatedURL').innerHTML
     navigator.clipboard.writeText(url)
       .then(() => {
-        console.log("Text copied to clipboard...")
+        console.log("Text copied to clipboard...", url)
       })
       .catch(err => console.log(err))
     btn.classList.add('btn-secondary')

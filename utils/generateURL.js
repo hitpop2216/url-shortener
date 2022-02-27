@@ -8,7 +8,7 @@ function generateURL() {
   const numbers = '1234567890'
   const collection = (lowerCaseLetters + upperCaseLetters + numbers).split('')
 
-  let url = 'https://urlshortener.herokuapp.com/'
+  let url = 'http://localhost:3000/'
   for (let i = 0; i < 5; i++) {
     url += randomLetter(collection)
   }

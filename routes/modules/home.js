@@ -1,6 +1,7 @@
 const express = require('express')
 const generateURL = require('../../utils/generateURL')
 const URL = require('../../models/urlshortener')
+const { application } = require('express')
 const router = express.Router()
 
 // 首頁
@@ -21,6 +22,16 @@ router.post('/', (req, res) => {
         urlOriginal: urls.urlOriginal,
         urlShorten: urls.urlShorten
       })
+    })
+    .catch(err => console.log(err))
+})
+
+router.get('/:shortenURL', (req, res) => {
+  const shortenURL = req.params.shortenURL
+  URL
+    .findOne({ urlShorten: `http://localhost:3000/${shortenURL}` })
+    .then(data => {
+      return res.redirect(`${data.urlOriginal}`)
     })
     .catch(err => console.log(err))
 })
